@@ -1,14 +1,21 @@
 import * as React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import Icon, {IconNames} from '../Icon';
-import colors from '../../ui/colors';
+import colors from '../../constants/colors';
 
 export type TextEditPropTypes = {
   iconName?: IconNames;
-  placeholder: string;
+  placeholder?: string;
+  value: string | undefined;
+  onChangeText: (text: string) => void | undefined;
 };
 
-const TextEdit = ({iconName, placeholder}: TextEditPropTypes) => {
+const TextEdit = ({
+  iconName,
+  placeholder,
+  onChangeText,
+  value,
+}: TextEditPropTypes) => {
   return (
     <View
       style={[
@@ -18,7 +25,9 @@ const TextEdit = ({iconName, placeholder}: TextEditPropTypes) => {
       {iconName ? <Icon name={iconName} color={colors.grey2} /> : null}
       <TextInput
         style={[styles.textInput, !iconName && styles.noImageTextInput]}
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
+        onChangeText={onChangeText}
+        value={value}
       />
     </View>
   );
