@@ -9,4 +9,5 @@ export default {
   black: '#000',
   hodBrown: 'rgba(210, 69, 30, 1)',
   hodBlue: 'rgba(2, 114, 186, 1)',
+  cardinal: 'rgba(225, 63, 81, 1)',
 };

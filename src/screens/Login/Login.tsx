@@ -41,6 +41,11 @@ const Login = ({navigation}: any) => {
               iconName="user"
               value={username}
               onChangeText={setUsername}
+              hasButton={true}
+              iconButtonName="fingerprint"
+              autoCorrect={false}
+              autoCapitalize="none"
+              keyboardType="email-address"
             />
           </View>
           <View style={[styles.fieldContainer]}>
@@ -49,6 +54,8 @@ const Login = ({navigation}: any) => {
               iconName="lock"
               value={password}
               onChangeText={setPassword}
+              autoCorrect={false}
+              secureTextEntry={true}
             />
           </View>
           <View style={styles.loginButtonWrapper}>
