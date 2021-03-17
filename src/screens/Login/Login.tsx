@@ -7,26 +7,26 @@ import {
   Text,
   View,
 } from 'react-native';
-import objToUrlEncoded from '../../utils/objToUrlEncoded';
 import TextEdit from '../../components/TextEdit';
 import Button from '../../components/Button';
-import {IconNames} from '../../components/Icon';
 import colors from '../../constants/colors';
-import {getToken} from '../../api/auth';
-
-const findToken = async () => {
-  const data = {
-    username: 'eliaquin.diaz@bairesdev.com',
-    password: 'K1r4m1h$E1976',
-    grant_type: 'password',
-  };
-  const formBody = objToUrlEncoded(data);
-  await getToken(formBody);
-};
+import {getCredentialsAreValid} from '../../api/auth';
 
 const Login = ({navigation}: any) => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const validateCredentials = async () => {
+    const credentials = {
+      username,
+      password,
+    };
+    const credentialsAreValid = await getCredentialsAreValid(credentials);
+    if (credentialsAreValid) {
+      navigation.navigate('AppStack', {screen: 'AppWrapper'});
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -38,15 +38,15 @@ const Login = ({navigation}: any) => {
           <View style={styles.fieldContainer}>
             <TextEdit
               placeholder="Username"
-              iconName={IconNames.user}
-              value={userName}
-              onChangeText={setUserName}
+              iconName="user"
+              value={username}
+              onChangeText={setUsername}
             />
           </View>
           <View style={[styles.fieldContainer]}>
             <TextEdit
               placeholder="Password"
-              iconName={IconNames.lock}
+              iconName="lock"
               value={password}
               onChangeText={setPassword}
             />
@@ -55,8 +55,7 @@ const Login = ({navigation}: any) => {
             <Button
               label="Log in"
               onPress={async () => {
-                await findToken();
-                navigation.navigate('AppStack', {screen: 'AppWrapper'});
+                await validateCredentials();
               }}
             />
           </View>

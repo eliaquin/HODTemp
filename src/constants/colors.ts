@@ -3,7 +3,7 @@ export default {
   lighter: '#F3F3F3',
   light: '#DAE1E7',
   lighterGrey: 'rgba(239, 239, 239, 1)',
-  grey: 'rgba(183, 183, 183, 1)',
+  grey: 'rgba(0, 0, 0, 0.25)',
   grey2: 'rgba(121, 120, 120, 1)',
   dark: '#444',
   black: '#000',

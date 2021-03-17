@@ -1,14 +1,13 @@
 import User from './svgs/User';
 import Lock from './svgs/Lock';
+import Fingerprint from './svgs/Fingerprint';
 
-export enum IconNames {
-  user = 'user',
-  lock = 'lock',
-}
+export type IconName = 'user' | 'lock' | 'fingerprint';
 
 const IconMap = {
-  [IconNames.user]: User,
-  [IconNames.lock]: Lock,
+  user: User,
+  lock: Lock,
+  fingerprint: Fingerprint,
 };
 
-export const getIcon = (name: IconNames) => IconMap[name];
+export const getIcon = (name: IconName) => IconMap[name];

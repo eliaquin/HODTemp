@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
-import Icon, {IconNames} from '../Icon';
+import {StyleSheet, TextInput, TextInputProps, View} from 'react-native';
+import Icon, {IconName} from '../Icon';
 import colors from '../../constants/colors';
 
-export type TextEditPropTypes = {
-  iconName?: IconNames;
-  placeholder?: string;
-  value: string | undefined;
-  onChangeText: (text: string) => void | undefined;
-};
+export interface TextEditPropTypes extends TextInputProps {
+  iconName?: IconName;
+}
 
 const TextEdit = ({
   iconName,
@@ -38,8 +35,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    height: 40,
-    borderRadius: 8,
+    height: 44,
+    borderRadius: 10,
     paddingHorizontal: 16,
     backgroundColor: colors.lighterGrey,
     borderBottomColor: colors.grey,
