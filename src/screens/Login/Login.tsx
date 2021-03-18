@@ -6,11 +6,14 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 import TextEdit from '../../components/TextEdit';
 import Button from '../../components/Button';
 import colors from '../../constants/colors';
 import {getCredentialsAreValid} from '../../api/auth';
+
+const HOD_Logo = require('../../assets/images/hod_logo.png');
 
 const Login = ({navigation}: any) => {
   const [username, setUsername] = useState('');
@@ -34,7 +37,9 @@ const Login = ({navigation}: any) => {
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
         <View style={styles.wrapper}>
-          <Text>Login Screen</Text>
+          <View style={styles.imageContainer}>
+            <Image source={HOD_Logo} style={styles.image} />
+          </View>
           <View style={styles.fieldContainer}>
             <TextEdit
               placeholder="Username"
@@ -46,6 +51,8 @@ const Login = ({navigation}: any) => {
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
+              iconColor={colors.silver}
+              iconButtonColor={colors.hodOrange}
             />
           </View>
           <View style={[styles.fieldContainer]}>
@@ -56,6 +63,7 @@ const Login = ({navigation}: any) => {
               onChangeText={setPassword}
               autoCorrect={false}
               secureTextEntry={true}
+              iconColor={colors.silver}
             />
           </View>
           <View style={styles.loginButtonWrapper}>
@@ -91,6 +99,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 24,
+  },
+  imageContainer: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  image: {
+    width: '50%',
+    height: 180,
+    resizeMode: 'contain',
   },
 });
 

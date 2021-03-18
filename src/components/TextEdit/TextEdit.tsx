@@ -14,6 +14,8 @@ export interface TextEditPropTypes extends TextInputProps {
   hasButton?: boolean;
   iconButtonName?: IconName;
   onIconButtonPress?: () => void;
+  iconColor?: string;
+  iconButtonColor?: string;
 }
 
 const TextEdit = (props: TextEditPropTypes) => {
@@ -25,11 +27,13 @@ const TextEdit = (props: TextEditPropTypes) => {
     hasButton = false,
     iconButtonName,
     onIconButtonPress,
+    iconColor,
+    iconButtonColor,
   } = props;
   return (
     <View style={[styles.container]}>
       <View style={styles.imageContainer}>
-        {iconName ? <Icon name={iconName} color={colors.grey2} /> : null}
+        {iconName ? <Icon name={iconName} color={iconColor} /> : null}
         <TextInput
           {...props}
           style={[styles.textInput, !iconName && styles.noImageTextInput]}
@@ -42,7 +46,7 @@ const TextEdit = (props: TextEditPropTypes) => {
         <Pressable style={styles.innerButton} onPress={onIconButtonPress}>
           <Icon
             name={iconButtonName}
-            color={colors.cardinal}
+            color={iconButtonColor}
             width={22}
             height={22}
           />
@@ -70,6 +74,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   noImageContainer: {},
   image: {
