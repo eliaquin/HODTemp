@@ -1,5 +1,5 @@
 import React from 'react';
-import { GestureResponderEvent, Pressable, StyleSheet, Text } from "react-native";
+import {GestureResponderEvent, Pressable, StyleSheet, Text} from 'react-native';
 import colors from '../../constants/colors';
 
 export interface ButtonProps {
@@ -15,15 +15,18 @@ const Button = ({label, onPress}: ButtonProps) => (
 
 const styles = StyleSheet.create({
   root: {
-    width: 100,
-    height: 40,
+    width: 164,
+    height: 38,
     backgroundColor: colors.hodBlue,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 2,
+    borderRadius: 5,
   },
   text: {
     color: colors.white,
+    fontWeight: '700',
+    fontSize: 14,
+    lineHeight: 16,
   },
 });
 
